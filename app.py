@@ -20,8 +20,12 @@ def exibir_opcoes():
     espaco()
 
 def opcao_invalida():
+    system('cls')
     print('Opção inválida!\n')
-    input('Digite uma tecla para voltar o menu principal\n') 
+    voltar_ao_menu_principal()
+
+def voltar_ao_menu_principal():
+    input('\nDigite uma tecla para voltar ao menu principal\n')
     main()
 
 def cadastrar_novo_restaurante():
@@ -30,10 +34,18 @@ def cadastrar_novo_restaurante():
     nome_do_restaurante = input('Nome do Restaurante para cadastro: ')
     restaurantes.append(nome_do_restaurante)
     print(f'\nO restaurante {nome_do_restaurante} foi cadastrado com sucesso!\n')
-    input('Digite uma tecla para voltar ao menu principal\n')
-    main()
+    voltar_ao_menu_principal()
     
     pass
+
+def listar_restaurantes():
+    system('cls')
+    print('Listando os restaurantes\n')
+    
+    for restaurante in restaurantes:
+        print(f'.{restaurante}')
+    
+    voltar_ao_menu_principal()
 
 def escolher_opcoes():
     try:
@@ -42,7 +54,7 @@ def escolher_opcoes():
             case 1:
                 cadastrar_novo_restaurante()
             case 2:
-                print('Listar Restaurantes')
+                listar_restaurantes()
             case 3:
                 print('Ativar Restaurante')
             case 4:
