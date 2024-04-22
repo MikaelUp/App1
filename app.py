@@ -1,6 +1,9 @@
 from os import system
 
-restaurantes = []
+restaurantes = [{'nome': 'praça', 'categoria': 'japonesa', 'ativo':False},
+                 {'nome' : 'Pizza', 'categoria': 'itlaizana',
+                  'ativo':True}
+]
 
 def exibir_nome_do_programa():
     print("A casa da vóvó\n")
@@ -36,7 +39,11 @@ def exibir_subtitulo(texto):
 def cadastrar_novo_restaurante():
     exibir_subtitulo('Cadastro de novos restaurantes')
     nome_do_restaurante = input('Nome do Restaurante para cadastro: ')
-    restaurantes.append(nome_do_restaurante)
+    categoria = input(f"""Digite o nome da categoria do restaurante
+{nome_do_restaurante}: """)
+    dados_do_restaurante = {'nome': nome_do_restaurante,
+    'categoria': categoria, 'ativo':False}
+    restaurantes.append(dados_do_restaurante)
     print(f'\nO restaurante {nome_do_restaurante} foi cadastrado com sucesso!\n')
     voltar_ao_menu_principal()
     
@@ -44,7 +51,11 @@ def listar_restaurantes():
     exibir_subtitulo('Listando os restaurantes')
     
     for restaurante in restaurantes:
-        print(f'.{restaurante}')
+        nome_restaurante = restaurante['nome']
+        categoria = restaurante['categoria']
+        ativo = restaurante['ativo']
+        print(f'{nome_restaurante} | {categoria} | {ativo}\n')
+
     
     voltar_ao_menu_principal()
 
@@ -71,5 +82,6 @@ def main():
     exibir_nome_do_programa()
     exibir_opcoes()
     escolher_opcoes()
+
 if __name__ == '__main__':
     main()
